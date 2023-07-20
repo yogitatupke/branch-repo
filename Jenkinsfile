@@ -3,9 +3,9 @@ pipeline {
 			stages {
 				stage("23Q1"){
 				steps {
-					sh "cd /mnt"
-					sh "cd git clone https://github.com/yogitatupke/branch-repo.git "
-					sh "cd .."
+					//sh "cd /mnt"//
+					//sh "cd git clone https://github.com/yogitatupke/branch-repo.git "//
+					//sh "cd .."//
 					sh "systemctl status docker"
 					sh "docker pull httpd"
 					sh "docker stop 23Q1"
