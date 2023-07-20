@@ -6,6 +6,7 @@ pipeline {
 					//sh "cd /mnt"//
 					//sh "cd git clone https://github.com/yogitatupke/branch-repo.git "//
 					//sh "cd .."//
+					sh "systemctl start docker"
 					sh "systemctl status docker"
 					sh "docker pull httpd"
 					sh "docker stop 23Q1"
