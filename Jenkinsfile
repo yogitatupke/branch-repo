@@ -11,8 +11,8 @@
 					sh "systemctl status docker"
 					//sh "systemctl enable docker"//
 					//sh "docker pull httpd"//
-					//sh "docker stop 23Q2"//
-					//sh "docker rm 23Q2"//
+					sh "docker stop 23Q2"
+					sh "docker rm 23Q2"
 					sh "docker system prune -a -f"
 					sh "docker run -itdp 8081:80 --name 23Q3 httpd"
 					sh "docker cp index.html 23Q3:/usr/local/apache2/htdocs"
