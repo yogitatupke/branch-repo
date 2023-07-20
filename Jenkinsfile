@@ -1,35 +1,23 @@
 pipeline {
-		agent {
-			label "main"
-		}
+		agent any 
 			stages {
 				stage("23Q1"){
 				steps {
-					sh "cd/mnt/docker-deploy"
-					sh "git checkout 23Q1"
-					sh "docker run -itd 80:80 --name 23Q1 httpd"
-					sh "docker exec -it 23Q1 bash"
-					sh "cd htdocs"
-					sh "chmod 777 index.html"
+					sh "cd /mnt"
+					sh "cd git clone https://github.com/yogitatupke/branch-repo.git "
+					sh "cd .."
+					sh "systemctl status docker"
+					sh "docker pull httpd"
+					sh "docker stop 23Q1"
+					sh "docker rm 23Q1"
+					sh "docker system prune -a -f"
+					sh "docker run -itdp 80:80 --name 23Q1 httpd"
 					sh "docker cp index.html 23Q1:/usr/local/apache2/htdocs"
-				}
+					sh "docker exec 23Q1 chmod -R 777 /usr/local/apache2/"
+					
 				
 				}
-			
-	stages {
-				stage ("23Q2") {
 				
-				steps{
-          sh "cd/mnt/docker-deploy"
-					sh "git checkout 23Q2"
-					sh "docker run -itd 80:80 --name 23Q2 httpd"
-					sh "docker exec -it 23Q2 bash"
-					sh "cd htdocs"
-					sh "chmod 777 index.html"
-					sh "docker cp index.html 23Q2:/usr/local/apache2/htdocs"
-
-          
-        }
 				
 				
 				} 
