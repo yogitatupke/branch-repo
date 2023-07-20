@@ -8,6 +8,7 @@ pipeline {
 					//sh "cd .."//
 					sh "systemctl start docker"
 					sh "systemctl status docker"
+					sh "systemctl enable docker"
 					sh "docker pull httpd"
 					sh "docker stop 23Q1"
 					sh "docker rm 23Q1"
